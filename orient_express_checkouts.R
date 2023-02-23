@@ -3,7 +3,6 @@ library("tidyverse")
 library("dplyr")
 library("ggplot2")
 
-
 #Sort for Agatha Christie books
 christie_overall <- spl_data %>%
   filter(str_detect(Creator, "Christie") == TRUE) %>%
