@@ -5,11 +5,27 @@ output: html_document
 
 ### Introduction
 
-An introduction of the data and a description of the trends/books/items you are choosing to analyze (and why!)
+This data is from the Seattle Public Library system, covering only 2022 and the first month of 2023. One facet of this data that is interesting is the number of digital items checked out versus the number of physical items checked out, specifically in a comparison between physical books and audiobooks. I am choosing to look at this question through the lens of one of my favorite authors growing up, Agatha Christie, whose books I read both as physical copies and as audiobooks (though in the King County Library System rather than SPL).
+
+I will compare physical book checkouts of some of Christie's most popular books (specifically "Murder on the Orient Express", "And Then There Were None", and "The Mysterious Affair at Styles")nto one that I really enjoy and feel is less appreciated than more well-known books called "Cards on the Table." 
+
+I will also be comparing the distribution of checkouts for "Murder on the Orient Express" across multiple mediums to see if my own reading patterns with audiobooks and physical books are similar at the Seattle population level. 
+
+Most generally, I will compare the average number of checkouts per item by medium to compare if physical media are more frequently read than digital media, or vice versa, across the entire dataset and the variety of different mediums that the Seattle Public Libraries offer. 
+
+XXXXXXX An introduction of the data and a description of the trends/books/items you are choosing to analyze (and why!)
 
 ### Summary Information
 
 Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
+
+```{r message = FALSE, warning = FALSE, echo = FALSE, code = readLines("summary.R") }
+
+```
+
+There were a grand total of `r summary_info$total_checkouts` items checked out across 2022 and Jan 2023. The most frequently checked out book from SPL was titled "`r summary_info$max_checkouts`." The month that had the highest number of checkouts in total was number `r summary_info$max_checkout_month`. One interesting comparison is between physical books and audiobooks; audiobooks, on average, were checked out `r summary_info$average_audiobook` times, while physical books were checked out `r summary_info$average_physical_book` times. The most popular Agatha Christie book was checked out `r `summary_info$christie_max_checkouts` times in a single month. Across all of 2022 the most popular book title was `r summary_info$christie_max_title` and the most popular format was an `r summary_info$christie_max_format`. 
+
+
 
 These will likely be calculated using your DPLYR skills, answering questions such as:
 
@@ -23,14 +39,34 @@ Feel free to calculate and report values that you find relevant.
 ### The Dataset
 
 - Who collected/published the data?  
+
+This data was collected by the Seattle Public Library. 
+
 - What are the parameters of the data (dates, number of checkouts, kinds of books, etc.)?
+
+The entire dataset collected by SPL has 42 million data points and reaches back to 2005, but the subset used here covers only 2022 and Jan 2023 and has only about 2.7 million data points. It covers physical books, video and sound recordings, 'checkouts' of library amenities like headphones, audiobooks/ebooks and other digital media, and many more types of item that can be checked out at a local library. 
+
 - How was the data collected or generated?  
+
+This data was collected through a variety of services. Physical items were recorded by merging historic physical item checkouts from Legrady artwork data archives with the current system implemented in 2016, Horizon ILS. Data on digital checkouts is provided by media vendors like Overdrive, hoopla, Freegal, and RBDigital. 
+
 - Why was the data collected?  
+
+This data was collected as part of the "Seattle Open Data" program, which collects data published by city departments for anyone to use or share. This data was collected to make it public knowledge and let average people understand SPL lending. 
+
 - What, if any, ethical questions do you need to consider when working with this data?  
 - What are possible limitations or problems with this data?   (at least 200 words)
 
 
+There are several limitations in this dataset. Renewals of library items are not counted as a 'checkout' for purposes of this data, which means that a common understanding of renewals of checking a book out again does not apply here. 
+
+
 ### First Trends Over Time Chart
+
+```{r message = FALSE, warning = FALSE, echo = FALSE, code = readLines("Checkouts_over_time.R") }
+
+```
+
 
 Include a chart. Make sure to describe why you included the chart, and what patterns emerged
 
@@ -48,7 +84,7 @@ When we say "clear" or "human readable" titles and labels, that means that you s
 Here's an example of how to run an R script inside an RMarkdown file:
 
 ``````{r, echo = FALSE, warning = FALSE, code = readLines("chart1_example.R")}
-```
+``````
 
 ### Second Trends Over Time Chart
 
@@ -67,10 +103,15 @@ When we say "clear" or "human readable" titles and labels, that means that you s
 
 Here's an example of how to run an R script inside an RMarkdown file:
 
-``````{r, echo = FALSE, code = readLines("chart2_example.R")}
-```
+``````{r message = FALSE, warning = FALSE, echo = FALSE, code = readLines("OrientExpressCheckouts.R") }
+``````
 
 ### Your Choice
+
+```{r}
+
+```
+
 
 The last chart is up to you. It could be a line plot, scatter plot, histogram, bar plot, stacked bar plot, and more. Here are some requirements to help guide your design:
 
@@ -80,7 +121,7 @@ The last chart is up to you. It could be a line plot, scatter plot, histogram, b
 
 Here's an example of how to run an R script inside an RMarkdown file:
 
-``````{r, echo = FALSE, code = readLines("chart2_example.R")}
-```
+``````{r message = FALSE, warning = FALSE, echo = FALSE, code = readLines("Checkout_by_type.R") }
+``````
 
 
