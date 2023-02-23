@@ -5,13 +5,13 @@ library("ggplot2")
 
 #Sort for Agatha Christie books
 christie_overall <- spl_data %>%
-  filter(str_detect(Creator, "Christie") == T) %>%
-  filter(str_detect(Creator, "Agatha") == T) %>%
+  filter(str_detect(Creator, "Christie") == TRUE) %>%
+  filter(str_detect(Creator, "Agatha") == TRUE) %>%
   mutate(total_date = paste0(CheckoutYear, "-", CheckoutMonth, "-01"))
 
 #Convert date to date format
-christie_overall$total_date <- as.Date(christie_overall$total_date, format = "%Y-%m-%d")
-
+christie_overall$total_date <- as.Date(christie_overall$total_date,
+                                       format = "%Y-%m-%d")
 
 #Consolidate multiple editions
 christie_spec_titles <- christie_overall %>%
@@ -19,24 +19,17 @@ christie_spec_titles <- christie_overall %>%
 christie_spec_titles <- christie_spec_titles %>%
   mutate(Title = gsub(" /.*", "", christie_spec_titles$Title))
 
-
 #Find only unabridged versions of "Murder on the Orient Express"
 orient_express <- christie_spec_titles %>%
   filter(Title %in% "Murder on the Orient Express") %>%
-  filter(str_detect(Subjects, "Drama") == F)
-
+  filter(str_detect(Subjects, "Drama") == FALSE)
 
 #Graph checkouts of "Orient Express" over time by material type
 ggplot(orient_express) +
   geom_line(aes(x = total_date, y = Checkouts, color = MaterialType)) +
   scale_color_brewer(palette = "Dark2") +
   labs(title = "Murder on the Orient Express Over Time",
-         subtitle = "2022", 
-    	   x = "Month",
-         y = "Number of Checkouts",
-    	   color = "Type of Material")
-
-  
-
-
-
+       subtitle = "2022",
+       x = "Month",
+       y = "Number of Checkouts",
+       color = "Type of Material")
