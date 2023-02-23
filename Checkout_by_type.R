@@ -15,7 +15,7 @@ avg_checkout_by_type <- selected_types %>%
 #Bar chart of average checkouts per item by medium
 ggplot(avg_checkout_by_type) +
   geom_col(mapping = aes(x = by_type, y = MaterialType, fill = MaterialType)) +
-  scale_color_brewer(palette = "Paired") +
+  scale_fill_brewer(palette = "Set2") +
   labs(title = "Average Checkouts By Item Type",
        subtitle = "2022-Jan 2023",
        x = "Average Checkouts",
