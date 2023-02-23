@@ -1,10 +1,8 @@
-rm(list = ls())
+#Summary Statistics
+#rm(list = ls())
 spl_data <- read.csv("2022-2023-All-Checkouts-SPL-Data.csv", stringsAsFactors = FALSE)
-
 library("dplyr")
 library("tidyverse")
-library("ggplot2")
-
 
 summary_info <- list()
 
