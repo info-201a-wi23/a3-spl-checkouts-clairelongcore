@@ -9,32 +9,18 @@ This data is from the Seattle Public Library system, covering only 2022 and the 
 
 I will compare physical book checkouts of some of Christie's most popular books (specifically "Murder on the Orient Express", "And Then There Were None", and "The Mysterious Affair at Styles")nto one that I really enjoy and feel is less appreciated than more well-known books called "Cards on the Table." 
 
-I will also be comparing the distribution of checkouts for "Murder on the Orient Express" across multiple mediums to see if my own reading patterns with audiobooks and physical books are similar at the Seattle population level. 
+I will also be comparing the distribution of checkouts for "Murder on the Orient Express" across multiple mediums to see if my own reading patterns with audiobooks and physical books are similar at the Seattle city level. 
 
 Most generally, I will compare the average number of checkouts per item by medium to compare if physical media are more frequently read than digital media, or vice versa, across the entire dataset and the variety of different mediums that the Seattle Public Libraries offer. 
 
-XXXXXXX An introduction of the data and a description of the trends/books/items you are choosing to analyze (and why!)
-
 ### Summary Information
-
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
 
 ```{r message = FALSE, warning = FALSE, echo = FALSE, code = readLines("summary.R") }
 
 ```
 
-There were a grand total of `r summary_info$total_checkouts` items checked out across 2022 and Jan 2023. The most frequently checked out book from SPL was titled "`r summary_info$max_checkouts`." The month that had the highest number of checkouts in total was number `r summary_info$max_checkout_month`. One interesting comparison is between physical books and audiobooks; audiobooks, on average, were checked out `r summary_info$average_audiobook` times per month, while physical books were checked out `r summary_info$average_physical_book` times per month. The most popular Agatha Christie book was checked out `r `summary_info$christie_max_checkouts` times in a single month. Across all of 2022 the most popular book title was `r summary_info$christie_max_title` and the most popular format was an `r summary_info$christie_max_format`. 
+There were a grand total of `r summary_info$total_checkouts` items checked out across 2022 and Jan 2023. The most frequently checked out book from SPL was titled "`r summary_info$max_checkouts`." The month that had the highest number of checkouts in total was number `r summary_info$max_checkout_month`. One interesting comparison is between physical books and audiobooks; audiobooks, on average, were checked out `r summary_info$average_audiobook` times per month, while physical books were checked out `r summary_info$average_physical_book` times per month. The most popular Agatha Christie book was checked out `r summary_info$christie_max_checkouts` times in a single month. Across all of 2022 the most popular book title was "`r summary_info$christie_max_title`" and the most popular format was an `r summary_info$christie_max_format`. 
 
-
-
-These will likely be calculated using your DPLYR skills, answering questions such as:
-
-- What is the average number of checkouts for each item?
-- What is the month or year with the most/least checkouts for a book that you're interested in?
-- What is the month or year with the most/least checkouts for ebooks?
-- How has the number of print book checkouts changed over time?
-
-Feel free to calculate and report values that you find relevant.
 
 ### The Dataset
 
@@ -58,8 +44,7 @@ This data was collected as part of the "Seattle Open Data" program, which collec
 
 - What are possible limitations or problems with this data?   (at least 200 words)
 
-
-There are several limitations in this dataset. Renewals of library items are not counted as a 'checkout' for purposes of this data, which means that a common understanding of renewals of checking a book out again does not apply here. There are many titles that are missing subject headings due to not having a record in the system before 2016 and subsequently not having its description merged into this data. Many of the publication dates are estimated, cover multiple years, or draw on copyright or printing dates instead of a true publication date, making these dates more difficult to compare. As a database of checkouts only, this does not tell us anything about the items that SPL has in its possession but were not checked out in 2022 (and which would have checkouts equal to 0 in each month), biasing averages (for example, the number of times each material type was checked out) upward. 
+There are several limitations in this dataset. Renewals of library items are not counted as a 'checkout' for purposes of this data, which means that a common understanding of renewals of checking a book out again does not apply here. There are many titles that are missing subject headings due to not having a record in the system before 2016 and subsequently not having its description merged into this data. Many of the publication dates are estimated, cover multiple years, or draw on copyright or printing dates instead of a true publication date, making these dates more difficult to compare. As a database of checkouts only, this does not tell us anything about the items that SPL has in its possession but were not checked out in 2022 (and which would have checkouts equal to 0 in each month), biasing averages (for example, the number of times each material type was checked out) upward and shifting trend lines when a 0-checkout month is not included and is instead skipped over as an average of the two neighboring months. The specific sub-dataset I am using is only the last approximate year, which means it does not allow checking if the patterns found in this data are unique to 2022 or are a long-term trend going back to 2005. 
 
 
 ### First Trends Over Time Chart
@@ -68,61 +53,19 @@ There are several limitations in this dataset. Renewals of library items are not
 
 ```
 
-
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The first chart that you will create and include will show the trend over time of your variable/topic/interest. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - For example, two books, or 5 different mediums
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear - legend title
-In your .Rmd file, make sure to describe why you included the chart, and what patterns emerged
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, warning = FALSE, code = readLines("chart1_example.R")}
-``````
+This graph demonstrates the variation in the number of physical book checkouts over time for three major Agatha Christie books (And Then There Were None, Murder on the Orient Express, Mysterious Affair at Styles) and one book, called "Cards on the Table," that I personally enjoy but is not included on best or most popular Agatha Christie book lists. I wanted to see if the most well-known Christie books were significantly more checked out than a less well-known book. In many months (Jan-Feb and Jul-Oct 2022) "Cards on the Table did indeed have the lowest number of physical book checkouts, but in other months (especially Mar-June 2022) actually exceeded the number of checkouts of "The Mysterious Affair at Styles." "And Then There Were None" was consistently the book checked out most frequently of these four, only being surpassed by "Murder on the Orient Express" in January, July, and October 2022. 
 
 ### Second Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The second chart that you will create and include will show another trend over time of your variable/topic/interest. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - For example, two books, or 5 different mediums
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear - legend title
-In your .Rmd file, make sure to describe why you included the chart, and what patterns emerged
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r message = FALSE, warning = FALSE, echo = FALSE, code = readLines("OrientExpressCheckouts.R") }
+``````{r message = FALSE, warning = FALSE, echo = FALSE, code = readLines("orient_express_checkouts.R") }
 ``````
 
+This is a line graph showing checkouts of "Murder on the Orient Express" between Jan 2022 and Jan 2023. It is included to show differences in the type of media most frequently used to access this particular book. It includes the soundtrack for the "Murder on the Orient Express" movie to set a baseline for other popular media associated with the book. The overall most popular material type was audiobooks, which in every month had the highest number of checkouts. This is fairly closely followed by the checkouts of ebooks, which varied between twenty and thirty checkouts per month. Actual physical books had a low but fairly consistent number of checkouts throughout this year, while ebooks and audiobooks varied much more month-to-month and both saw a large decline of about ten fewer checkouts in January 2023. These are all consistently more popular than the affiliated soundtrack, however, which never broke five checkouts per month. 
+
 ### Your Choice
-
-```{r}
-
-```
-
-
-The last chart is up to you. It could be a line plot, scatter plot, histogram, bar plot, stacked bar plot, and more. Here are some requirements to help guide your design:
-
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
-
-Here's an example of how to run an R script inside an RMarkdown file:
 
 ``````{r message = FALSE, warning = FALSE, echo = FALSE, code = readLines("Checkout_by_type.R") }
 ``````
 
+This is a bar chart that shows average number of checkouts per item based on their item type. It is included to compare the frequency of checkouts across different item types throughout the entire dataset, as a more general assessment of this distribution than for specific Agatha Christie books. On average, a given audiobook that was checked out in this time period was checked out more than four times, while an ebook was only checked out on average slightly more than three times and a physical book fewer than three times per month. Sheet music was the most infrequently checked out item on average of the types included here, with each item checked out less than twice per month. Surprisingly, the rate of checkouts for atlases and for visual media, which are less associated with the general functioning of a library, were checked out more times on average than sound discs and were overall fairly similar to the rates of physical book checkouts, which are seen as core to library functionality. Audiobooks were checked out the most times per month on average, which is similar to the result found for "Murder on the Orient Express" specifically. 
 
