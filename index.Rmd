@@ -7,7 +7,7 @@ output: html_document
 
 This data is from the Seattle Public Library system, covering only 2022 and the first month of 2023. One facet of this data that is interesting is the number of digital items checked out versus the number of physical items checked out, specifically in a comparison between physical books and audiobooks. I am choosing to look at this question through the lens of one of my favorite authors growing up, Agatha Christie, whose books I read both as physical copies and as audiobooks (though in the King County Library System rather than SPL).
 
-I will compare physical book checkouts of some of Christie's most popular books (specifically "Murder on the Orient Express", "And Then There Were None", and "The Mysterious Affair at Styles")nto one that I really enjoy and feel is less appreciated than more well-known books called "Cards on the Table." 
+I will compare physical book checkouts of some of Christie's most popular books (specifically "Murder on the Orient Express", "And Then There Were None", and "The Mysterious Affair at Styles") into one that I really enjoy and feel is less appreciated than more well-known books called "Cards on the Table." 
 
 I will also be comparing the distribution of checkouts for "Murder on the Orient Express" across multiple mediums to see if my own reading patterns with audiobooks and physical books are similar at the Seattle city level. 
 
