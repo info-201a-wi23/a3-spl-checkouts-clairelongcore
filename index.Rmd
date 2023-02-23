@@ -23,7 +23,7 @@ Write a summary paragraph of findings that includes the 5 values calculated from
 
 ```
 
-There were a grand total of `r summary_info$total_checkouts` items checked out across 2022 and Jan 2023. The most frequently checked out book from SPL was titled "`r summary_info$max_checkouts`." The month that had the highest number of checkouts in total was number `r summary_info$max_checkout_month`. One interesting comparison is between physical books and audiobooks; audiobooks, on average, were checked out `r summary_info$average_audiobook` times, while physical books were checked out `r summary_info$average_physical_book` times. The most popular Agatha Christie book was checked out `r `summary_info$christie_max_checkouts` times in a single month. Across all of 2022 the most popular book title was `r summary_info$christie_max_title` and the most popular format was an `r summary_info$christie_max_format`. 
+There were a grand total of `r summary_info$total_checkouts` items checked out across 2022 and Jan 2023. The most frequently checked out book from SPL was titled "`r summary_info$max_checkouts`." The month that had the highest number of checkouts in total was number `r summary_info$max_checkout_month`. One interesting comparison is between physical books and audiobooks; audiobooks, on average, were checked out `r summary_info$average_audiobook` times per month, while physical books were checked out `r summary_info$average_physical_book` times per month. The most popular Agatha Christie book was checked out `r `summary_info$christie_max_checkouts` times in a single month. Across all of 2022 the most popular book title was `r summary_info$christie_max_title` and the most popular format was an `r summary_info$christie_max_format`. 
 
 
 
@@ -40,11 +40,11 @@ Feel free to calculate and report values that you find relevant.
 
 - Who collected/published the data?  
 
-This data was collected by the Seattle Public Library. 
+This data was collected by the Seattle Public Library internally on their own libraries. 
 
 - What are the parameters of the data (dates, number of checkouts, kinds of books, etc.)?
 
-The entire dataset collected by SPL has 42 million data points and reaches back to 2005, but the subset used here covers only 2022 and Jan 2023 and has only about 2.7 million data points. It covers physical books, video and sound recordings, 'checkouts' of library amenities like headphones, audiobooks/ebooks and other digital media, and many more types of item that can be checked out at a local library. 
+The entire dataset collected by SPL has 42 million data points and reaches back to 2005, but the subset used here covers only 2022 and Jan 2023 and has only about 2.7 million data points. It covers physical books, video and sound recordings, 'checkouts' of library amenities like headphones, audiobooks/ebooks and other digital media, and many more types of item. 
 
 - How was the data collected or generated?  
 
@@ -55,10 +55,11 @@ This data was collected through a variety of services. Physical items were recor
 This data was collected as part of the "Seattle Open Data" program, which collects data published by city departments for anyone to use or share. This data was collected to make it public knowledge and let average people understand SPL lending. 
 
 - What, if any, ethical questions do you need to consider when working with this data?  
+
 - What are possible limitations or problems with this data?   (at least 200 words)
 
 
-There are several limitations in this dataset. Renewals of library items are not counted as a 'checkout' for purposes of this data, which means that a common understanding of renewals of checking a book out again does not apply here. 
+There are several limitations in this dataset. Renewals of library items are not counted as a 'checkout' for purposes of this data, which means that a common understanding of renewals of checking a book out again does not apply here. There are many titles that are missing subject headings due to not having a record in the system before 2016 and subsequently not having its description merged into this data. Many of the publication dates are estimated, cover multiple years, or draw on copyright or printing dates instead of a true publication date, making these dates more difficult to compare. As a database of checkouts only, this does not tell us anything about the items that SPL has in its possession but were not checked out in 2022 (and which would have checkouts equal to 0 in each month), biasing averages (for example, the number of times each material type was checked out) upward. 
 
 
 ### First Trends Over Time Chart
